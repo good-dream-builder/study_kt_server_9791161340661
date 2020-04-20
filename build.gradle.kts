@@ -26,24 +26,40 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-hateoas")
-	implementation("org.springframework.boot:spring-boot-starter-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	// KOTLIN
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2")
-	implementation("org.springframework.session:spring-session-jdbc")
-	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	// WEB
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	// DB
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	runtimeOnly("mysql:mysql-connector-java")
+
+	// jpa
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+	// mybatis를 사용할 경우 아래 주석 해제.
+	// implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	// implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2")
+
+	// SECURITY
+	// implementation("org.springframework.boot:spring-boot-starter-security")
+	// testImplementation("org.springframework.security:spring-security-test")
+
+	// UTILS
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
+	// implementation("org.springframework.boot:spring-boot-starter-hateoas")
+
+	// TEST
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
-	testImplementation("org.springframework.security:spring-security-test")
+
 }
 
 tasks.withType<Test> {
