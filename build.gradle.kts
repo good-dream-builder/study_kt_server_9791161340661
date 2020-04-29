@@ -60,6 +60,8 @@ dependencies {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 
+	// HASH
+	implementation("org.mindrot:jbcrypt:0.4")
 }
 
 tasks.withType<Test> {
