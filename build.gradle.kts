@@ -41,6 +41,12 @@ dependencies {
 	// jpa
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+	// Login Token
+	// jwt
+	implementation("com.auth0:java-jwt:3.8.1")
+
+
+
 	// mybatis를 사용할 경우 아래 주석 해제.
 	// implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	// implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2")
