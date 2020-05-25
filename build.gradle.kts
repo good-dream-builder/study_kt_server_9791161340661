@@ -56,6 +56,7 @@ dependencies {
 	// testImplementation("org.springframework.security:spring-security-test")
 
 	// UTILS
+	implementation("net.coobird:thumbnailator:0.4.8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")

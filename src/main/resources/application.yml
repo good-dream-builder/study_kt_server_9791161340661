@@ -32,3 +32,7 @@ spring:
 
 #mybatis.config-location=classpath:mybatis-config.xml
 #mybatis.mapper-locations=classpath:mappers/**/*.xml
+
+simple-shop:
+  file-upload:
+    default-dir: C:/Users/psj/Desktop/simple-shop-datacenter
