@@ -16,14 +16,16 @@ class WebConfig
     @Value("\${simple-shop.file-upload.default-dir}")
     var resourceLocation: String? = ""
 
+    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
+        registry.addResourceHandler("/images/**")
+                .addResourceLocations("file:/Users/psj/Desktop/SimpleShop/simple-shop-datacenter/images/")
+//                .addResourceLocations("file:///C:/Users/psj/Desktop/simple-shop-datacenter/images")
+    }
+
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(tokenValidationInterceptor)
                 .addPathPatterns("/api/**")
     }
 
-    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations(resourceLocation)
-//                .addResourceLocations("file:///C:/Users/psj/Desktop/simple-shop-datacenter/images")
-    }
+
 }
