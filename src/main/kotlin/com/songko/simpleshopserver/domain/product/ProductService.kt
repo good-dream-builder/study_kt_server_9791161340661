@@ -24,9 +24,9 @@ class ProductService @Autowired constructor(
 
         return when (condition) {
             NEXT_IN_CATEGORY -> productRepository
-                    .findByCategoryIdAndIdGreaterThanOrderByIdDesc(categoryId, productId, pageable)
-            PREV_IN_CATEGORY -> productRepository
                     .findByCategoryIdAndIdLessThanOrderByIdDesc(categoryId, productId, pageable)
+            PREV_IN_CATEGORY -> productRepository
+                    .findByCategoryIdAndIdGreaterThanOrderByIdDesc(categoryId, productId, pageable)
             else -> throw IllegalArgumentException("상품 검색 조건 오류")
         }
     }
