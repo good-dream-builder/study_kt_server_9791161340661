@@ -2,6 +2,7 @@ package com.songko.simpleshopserver.domain.product
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.lang.IllegalArgumentException
 
@@ -9,6 +10,8 @@ import java.lang.IllegalArgumentException
 class ProductService @Autowired constructor(
         private val productRepository: ProductRepository
 ) {
+    // 상품 하나 조회. id에 해당하지 않는 상품이 있는 경우 null 반환.
+    fun get(id: Long) = productRepository.findByIdOrNull(id)
 
     fun search(
             categoryId: Int?,

@@ -1,12 +1,10 @@
 package com.songko.simpleshopserver.controller
 
 import com.songko.simpleshopserver.common.ApiResponse
-import com.songko.simpleshopserver.domain.product.Product
-import com.songko.simpleshopserver.domain.product.ProductImageService
-import com.songko.simpleshopserver.domain.product.ProductService
+import com.songko.simpleshopserver.common.CustomException
+import com.songko.simpleshopserver.domain.product.*
 import com.songko.simpleshopserver.domain.product.registration.ProductRegistrationRequest
 import com.songko.simpleshopserver.domain.product.registration.ProductRegistrationService
-import com.songko.simpleshopserver.domain.product.toProductListItemResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
@@ -19,6 +17,11 @@ class ProductApiController @Autowired constructor(
         private val productRegistrationService: ProductRegistrationService,
         private val productService: ProductService
 ) {
+    @GetMapping("/products/{id}")
+    fun get(@PathVariable id: Long) = productService.get(id)?.let {
+        ApiResponse.ok(it.toProductResponse())
+    } ?: throw CustomException("상품 정보를 찾을 수 없습니다.")
+
     @PostMapping("/product_images")
     fun uploadImage(image: MultipartFile) = ApiResponse.ok(
             productImageService.uploadImage(image)
