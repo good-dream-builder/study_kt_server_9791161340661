@@ -18,8 +18,8 @@ class WebConfig
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("/images/**")
-                .addResourceLocations("file:/Users/psj/Desktop/SimpleShop/simple-shop-datacenter/images/")
-//                .addResourceLocations("file:///C:/Users/psj/Desktop/simple-shop-datacenter/images")
+//                .addResourceLocations("file:/Users/psj/Desktop/SimpleShop/simple-shop-datacenter/images/")
+                .addResourceLocations("file:///C:/Users/psj/Desktop/simple-shop-datacenter/images/")
     }
 
     override fun addInterceptors(registry: InterceptorRegistry) {
