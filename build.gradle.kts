@@ -45,6 +45,8 @@ dependencies {
 	// jwt
 	implementation("com.auth0:java-jwt:3.8.1")
 
+	// FCM
+	implementation("com.google.firebase:firebase-admin:6.8.1")
 
 
 	// mybatis를 사용할 경우 아래 주석 해제.

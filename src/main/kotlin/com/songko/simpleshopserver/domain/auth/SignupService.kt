@@ -35,24 +35,24 @@ class SignupService @Autowired constructor(
                         .matches(email)
                         .not()
 
-        if(isNotValidEmail) {
+        if (isNotValidEmail) {
             throw CustomException("이메일 형식이 올바르지 않습니다.")
         }
     }
 
     private fun validateName(name: String) {
-        if(name.trim().length !in 2..20) {
+        if (name.trim().length !in 2..20) {
             throw CustomException("이름은 2자 이상 20자 이하여야 합니다.")
         }
     }
 
-    private fun validatePassword(password:String) {
-        if(password.trim().length !in 8..20) {
+    private fun validatePassword(password: String) {
+        if (password.trim().length !in 8..20) {
             throw CustomException("비밀번호는 공백을 제외하고 8자 이상 20자 이하여야 합니다.")
         }
     }
 
-    private fun checkDuplicates(email:String) =
+    private fun checkDuplicates(email: String) =
             userRepository.findByEmail(email)?.let {
                 throw CustomException("이미 사용 중인 이메일입니다.")
             }
@@ -60,7 +60,7 @@ class SignupService @Autowired constructor(
     private fun registerUser(signupRequest: SignupRequest) =
             with(signupRequest) {
                 val hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt())
-                val user = User(email, hashedPassword, name)
+                val user = User(email, hashedPassword, name, fcmToken)
                 userRepository.save(user)
             }
 }

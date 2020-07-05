@@ -23,6 +23,10 @@ class SigninService @Autowired constructor(
             throw CustomException("로그인 정보를 확인해주세요.")
         }
 
+        // 푸시 토큰 업데이트
+        user.fcmToken = signinRequest.fcmToken
+        userRepository.save(user)
+
         return responseWithTokens(user)
     }
 
