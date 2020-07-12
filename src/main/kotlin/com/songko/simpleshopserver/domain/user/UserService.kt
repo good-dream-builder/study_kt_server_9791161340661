@@ -9,6 +9,10 @@ import java.lang.IllegalStateException
 class UserService @Autowired constructor(
         private val userRepository: UserRepository
 ) {
+
+    fun find(userId: Long) = userRepository.findByIdOrNull(userId)
+
+
     fun updateFcmToke(userId: Long, fcmToken: String) =
             userRepository.findByIdOrNull(userId)?.run {
                 this.fcmToken = fcmToken
