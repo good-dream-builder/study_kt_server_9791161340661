@@ -5,6 +5,9 @@ spring:
   thymeleaf:
     cache: false
 
+  resources:
+    static-locations:
+
   servlet:
     multipart:
       max-file-size: 50MB
@@ -18,7 +21,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/simple_shop?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=UTC&useSSL=false
     username: root
-    password: 1
+    password: 11111111
 
   jpa:
     hibernate:
@@ -35,4 +38,5 @@ spring:
 
 simple-shop:
   file-upload:
-    default-dir: C:/Users/psj/Desktop/simple-shop-datacenter
+    default-dir: /Users/psj/Desktop/SimpleShop/simple-shop-datacenter
+#    default-dir: C:/Users/psj/Desktop/simple-shop-datacenter
