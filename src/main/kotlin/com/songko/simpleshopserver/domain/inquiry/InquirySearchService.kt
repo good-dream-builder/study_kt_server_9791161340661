@@ -19,7 +19,7 @@ class InquirySearchService @Autowired constructor(
             productOwnerId: Long?,
             direction: String
     ): List<Inquiry> {
-        val condition = InquirySearchConditon(
+        val condition = InquirySearchCondition(
                 direction,
                 productId != null,
                 requestUserId != null,
@@ -57,7 +57,7 @@ class InquirySearchService @Autowired constructor(
                             inquiryId,
                             PageRequest.of(0, 10)
                     )
-            PREV_FOR_USER -> inquiryRepository
+            PREV_FOR_USER_PRODUCT -> inquiryRepository
                     .findByProductOwnerIdAndIdGreaterThanOrderByIdDesc(
                             requestUserId,
                             inquiryId,
@@ -67,7 +67,7 @@ class InquirySearchService @Autowired constructor(
         }
     }
 
-    data class InquirySearchConditon(
+    data class InquirySearchCondition(
             val direction: String,
             val hasProductId: Boolean = false,
             val hasRequestUserId: Boolean = false,
@@ -75,16 +75,16 @@ class InquirySearchService @Autowired constructor(
     )
 
     companion object {
-        val NEXT_FOR_PRODUCT = InquirySearchConditon("next", true)
+        val NEXT_FOR_PRODUCT = InquirySearchCondition("next", true)
 
-        val PREV_FOR_PRODUCT = InquirySearchConditon("prev", true)
+        val PREV_FOR_PRODUCT = InquirySearchCondition("prev", true)
 
-        val NEXT_FOR_USER = InquirySearchConditon("next", hasRequestUserId = true)
+        val NEXT_FOR_USER = InquirySearchCondition("next", hasRequestUserId = true)
 
-        val PREV_FOR_USER = InquirySearchConditon("prev", hasRequestUserId = true)
+        val PREV_FOR_USER = InquirySearchCondition("prev", hasRequestUserId = true)
 
-        val NEXT_FOR_USER_PRODUCT = InquirySearchConditon("next", hasProductOwnerId = true)
+        val NEXT_FOR_USER_PRODUCT = InquirySearchCondition("next", hasProductOwnerId = true)
 
-        val PREV_FOR_USER_PRODUCT = InquirySearchConditon("prev", hasProductOwnerId = true)
+        val PREV_FOR_USER_PRODUCT = InquirySearchCondition("prev", hasProductOwnerId = true)
     }
 }

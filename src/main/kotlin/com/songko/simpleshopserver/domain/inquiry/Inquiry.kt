@@ -15,6 +15,7 @@ data class Inquiry(
         val question: String,
         var answer: String? = null
 ) : BaseEntity() {
+    constructor():this(0,0,0,"",null)
 
     // 질문자 ID
     @ManyToOne

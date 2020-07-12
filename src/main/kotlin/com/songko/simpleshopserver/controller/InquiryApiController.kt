@@ -21,7 +21,7 @@ class InquiryApiController @Autowired constructor(
         private val inquirySearchService: InquirySearchService,
         private val userContextHolder: UserContextHolder
 ) {
-    @PostMapping("inquiries")
+    @PostMapping("/inquiries")
     fun register(@RequestBody request: InquiryRequest) =
             userContextHolder.id?.let { userId ->
                 ApiResponse.ok(inquiryService.register(request, userId))
