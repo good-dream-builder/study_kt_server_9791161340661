@@ -85,6 +85,6 @@ class InquirySearchService @Autowired constructor(
 
         val NEXT_FOR_USER_PRODUCT = InquirySearchCondition("next", hasProductOwnerId = true)
 
-        val PREV_FOR_USER_PRODUCT = InquirySearchConditon("prev", hasProductOwnerId = true)
+        val PREV_FOR_USER_PRODUCT = InquirySearchCondition("prev", hasProductOwnerId = true)
     }
 }
